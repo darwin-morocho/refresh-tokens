@@ -3,8 +3,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import swagger from 'swagger-ui-express';
 import Tokens from './mongo/controllers';
-
-const swaggerDocument = require('./swagger.json');
+import apiDoc from './swagger';
 
 interface InitData {
   app: Application;
@@ -54,7 +53,7 @@ class RefreshTokens {
     );
 
     data.app.use('/refresh-tokens-api-docs', swagger.serve);
-    data.app.get('/refresh-tokens-api-docs', swagger.setup(swaggerDocument));
+    data.app.get('/refresh-tokens-api-docs', swagger.setup(apiDoc));
   }
 
   // middleware to validate a jwt
