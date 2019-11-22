@@ -4,16 +4,16 @@ NPM
 
 ```
 npm i https://github.com/darwin-morocho/refresh-tokens.git
-npm explore @itzam/refresh-tokens -- npm i
-npm explore @itzam/refresh-tokens -- npm run build
+npm explore @dina.ec/refresh-tokens -- npm i
+npm explore @dina.ec/refresh-tokens -- npm run build
 ```
 
 YARN
 
 ```
 yarn add https://github.com/darwin-morocho/refresh-tokens.git
-yarn --cwd node_modules/@itzam/refresh-tokens/ add
-yarn --cwd node_modules/@itzam/refresh-tokens/ run build
+yarn --cwd node_modules/@dina.ec/refresh-tokens/ add
+yarn --cwd node_modules/@dina.ec/refresh-tokens/ run build
 ```
 
 # Use

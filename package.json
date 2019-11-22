@@ -1,5 +1,5 @@
 {
-  "name": "@itzam/refresh-tokens",
+  "name": "@dina.ec/refresh-tokens",
   "version": "0.0.1",
   "description": "refresh tokens library for nodejs server",
   "main": "dist/index.js",
