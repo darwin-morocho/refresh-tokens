@@ -8,8 +8,8 @@ interface RefreshTokenData {
 }
 
 class Tokens {
-  expiresIn: number;
-  jwtSecret: string;
+  expiresIn!: number;
+  jwtSecret!: string;
   constructor(jwtSecret: string, expiresIn: number) {
     this.expiresIn = expiresIn;
     this.jwtSecret = jwtSecret;

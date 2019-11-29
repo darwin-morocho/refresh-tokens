@@ -1,83 +1,65 @@
-const doc = {
+export default {
+  swagger: '2.0',
+  schemes: ['https', 'http'],
   basePath: '/refresh-tokens',
   produces: ['application/json'],
   paths: {
     '/register': {
       post: {
-        'x-swagger-router-controller': 'Metodo para agregar una asistencia',
-        operationId: '/add',
-        tags: [
-          'Ruta para crear una asistencia de ingreso telefónico ( desde asistenciadora hacia aseguradora).'
-        ],
-        description:
-          'Método para registrar la solicitud de una asistencia por medio telefónico.',
-
+        'x-swagger-router-controller': 'home',
+        description: 'register a new token into db',
         parameters: [
           {
-            name: 'x-access-token',
+            name: 'token',
             in: 'header',
             required: true,
             type: 'string',
-            description: 'API KEY'
-          },
-
-          {
-            in: 'body',
-            name: 'body',
-            description: 'cuerpo de la peticion',
-            required: true,
-            schema: { $ref: '#/definitions/add' }
+            description: 'jwt token'
           }
         ],
-
         responses: {
-          '200': {
-            description: 'Ok'
+          '403': {
+            description: 'error message'
           },
-          '50X': {
-            description: 'Error interno del servidor'
+          '500': {
+            description: 'error message'
+          },
+
+          '200': {
+            description: 'OK'
           }
         }
       }
     },
-
     '/refresh': {
       post: {
-        'x-swagger-router-controller':
-          'Metodo para asignar proveedor a una asistencia',
-        operationId: '/assigned',
-        tags: ['Ruta para asignar proveedores a una una asistencia.'],
-        description: 'Método para asignar proveedores a una asistencia.',
+        'x-swagger-router-controller': 'home',
 
+        description: 'refresh one expired token',
         parameters: [
           {
-            name: 'x-access-token',
+            name: 'token',
             in: 'header',
             required: true,
             type: 'string',
-            description: 'API KEY'
-          },
-
-          {
-            in: 'body',
-            name: 'body',
-            description: 'cuerpo de la peticion',
-            required: true,
-            schema: { $ref: '#/definitions/assign' }
+            description: 'expired jwt token'
           }
         ],
-
         responses: {
-          '200': {
-            description: 'Ok'
+          '500': {
+            description: 'error message'
           },
-          '50X': {
-            description: 'Error interno del servidor'
+          '200': {
+            description: 'a new jwt token',
+            examples: {
+              '': {
+                token: '',
+                expiresIn: 5000
+              }
+            }
           }
         }
       }
     }
   }
 };
-
-export default doc;
