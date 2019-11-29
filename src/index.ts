@@ -13,8 +13,8 @@ interface InitData {
 type ConnectCallback = (error?: any) => any;
 
 class RefreshTokens {
-  expiresIn: number;
-  jwtSecret: string;
+  private expiresIn: number;
+  private jwtSecret: string;
 
   constructor(data: InitData) {
     mongoose.set('useCreateIndex', true);
@@ -43,9 +43,21 @@ class RefreshTokens {
   // build the endpoint to refesh tokens
   init(app: Application) {
     const tokens = new Tokens(this.jwtSecret, this.expiresIn);
+
+    const validateJwt = (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const token: string = req.headers['token'] as string;
+        jwt.verify(token, this.jwtSecret);
+        req.token = token;
+        next();
+      } catch (e) {
+        res.status(403).send(e.message);
+      }
+    };
+
     app.post(
       '/refresh-tokens/register',
-      this.validateJwt,
+      validateJwt,
       async (req: Request, res: Response) => {
         try {
           const token: string = req.token as string;
@@ -74,18 +86,6 @@ class RefreshTokens {
 
     app.use('/refresh-tokens-api-docs', swagger.serve);
     app.get('/refresh-tokens-api-docs', swagger.setup(apiDoc));
-  }
-
-  // middleware to validate a jwt
-  validateJwt(req: Request, res: Response, next: NextFunction) {
-    try {
-      const token: string = req.headers['token'] as string;
-      jwt.verify(token, this.jwtSecret);
-      req.token = token;
-      next();
-    } catch (e) {
-      res.status(403).send(e.message);
-    }
   }
 }
 
