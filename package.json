@@ -1,7 +1,10 @@
 {
-  "name": "@dina.ec/refresh-tokens",
+  "name": "refresh-tokens",
   "version": "0.0.1",
-  "description": "refresh tokens library for nodejs server",
+  "keywords": [
+    "refresh-tokens"
+  ],
+  "description": "refresh tokens library for nodejs server with mongodb",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,8 +13,14 @@
     "dev": "nodemon src/app.ts",
     "build": "tsc -p ."
   },
-  "author": "ITZAMDEVDESIGN S.A.",
-  "license": "ISC",
+  "homepage": "https://github.com/darwin-morocho/refresh-tokens",
+  "author": {
+    "name": "Darwin Morocho",
+    "email": "dsmr.apps@gmail.com",
+    "url": "https://dina.ec"
+  },
+  "private": false,
+  "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/jsonwebtoken": "^8.3.5",

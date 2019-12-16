@@ -1,21 +1,3 @@
-# installation
-
-NPM
-
-```
-npm i https://github.com/darwin-morocho/refresh-tokens.git
-npm explore @dina.ec/refresh-tokens -- npm i
-npm explore @dina.ec/refresh-tokens -- npm run build
-```
-
-YARN
-
-```
-yarn add https://github.com/darwin-morocho/refresh-tokens.git
-yarn --cwd node_modules/@dina.ec/refresh-tokens/ add
-yarn --cwd node_modules/@dina.ec/refresh-tokens/ run build
-```
-
 # Use
 
 ### No ES6
