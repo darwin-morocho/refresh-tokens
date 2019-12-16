@@ -3,7 +3,7 @@
 ### No ES6
 
 ```jsx
-const refreshTokens = require('@itzam/refresh-tokens/dist/index');
+const refreshTokens = require('refresh-tokens/dist/index');
 const app = express(); // creates a express app
 const refreshTokens = new refreshTokens.default({
   expiresIn: 60 * 10, // 10 minutes in seconds
@@ -25,10 +25,10 @@ refreshTokens.connectToDB(
 );
 ```
 
-### ES6
+### ES6 with typescript
 
 ```jsx
-import RefreshTokens from '@itzam/refresh-tokens/dist/index';
+import RefreshTokens from 'refresh-tokens';
 const app: Application = express(); // creates a express app
 const refreshTokens = new RefreshTokens({
   expiresIn: 60 * 10, // 10 minutes in seconds
@@ -49,3 +49,6 @@ refreshTokens.connectToDB(
   }
 );
 ```
+
+## Refesh Tokens API
+just go to `http://<your-host:port>/refresh-tokens-api-docs`
